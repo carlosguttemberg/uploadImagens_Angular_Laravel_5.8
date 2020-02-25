@@ -14,10 +14,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatBadgeModule} from '@angular/material/badge';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
