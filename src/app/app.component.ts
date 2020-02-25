@@ -9,7 +9,7 @@ import { Post } from './post';
 export class AppComponent {
   title = 'postImagens';
 
-  private posts: Post[] = [
+  public posts: Post[] = [
     new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
     new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
     new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
