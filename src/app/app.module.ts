@@ -17,11 +17,13 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { PostComponent } from './post/post.component';
 import {MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { PostDialogComponent } from './post-dialog/post-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
+    PostDialogComponent,
     
   ],
   imports: [
@@ -39,6 +41,9 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatToolbarModule,
     MatBadgeModule,
     MatCardModule
+  ],
+  entryComponents: [
+    PostDialogComponent
   ],
   providers: [{provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap: [AppComponent]
