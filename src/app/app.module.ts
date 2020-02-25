@@ -18,6 +18,7 @@ import { PostComponent } from './post/post.component';
 import {MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
+import { FormsModule }   from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
     MatChipsModule,
     MatToolbarModule,
     MatBadgeModule,
-    MatCardModule
+    MatCardModule,
+    FormsModule
   ],
   entryComponents: [
     PostDialogComponent
