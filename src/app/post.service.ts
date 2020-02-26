@@ -1,22 +1,41 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType, HttpEvent } from '@angular/common/http';
 import { Post } from './post';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
+export class PostService { 
+
+  public posts: Post[] = [];
   
-  public posts: Post[] = [
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-  ];
-  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+      this.http.get("/api/").subscribe(
+          (posts: any[]) => {
+              for (let p of posts) {
+                  this.posts.push(
+                      new Post(p.nome, p.titulo, p.subTitulo, p.email, p.mensagem, p.arquivo, p.id, p.likes)
+                  )
+              }
+          }
+      );
+  }
+
+  salvar(post: Post, file: File){
+      const uploadData = new FormData();
+
+      uploadData.append('nome', post.nome);
+      uploadData.append('email', post.titulo);
+      uploadData.append('titulo', post.titulo);
+      uploadData.append('subTitulo', post.subTitulo);
+      uploadData.append('mensagem', post.mensagem);
+      uploadData.append('arquivo', file);
+
+      this.http.post("/api/", uploadData).subscribe((event: any) => {
+            if (event.type == HttpEventType.Response) {
+              console.log(event);
+            }
+          }
+      );
+  }
 }

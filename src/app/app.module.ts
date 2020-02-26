@@ -51,7 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
   entryComponents: [
     PostDialogComponent
   ],
-  providers: [PostService],
+  providers: [PostService, {provide: APP_BASE_HREF, useValue : '/' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
