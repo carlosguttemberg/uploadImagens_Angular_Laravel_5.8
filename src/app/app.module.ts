@@ -19,6 +19,9 @@ import {MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
 import { FormsModule }   from '@angular/forms';
+import { PostService } from './post.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -42,12 +45,13 @@ import { FormsModule }   from '@angular/forms';
     MatToolbarModule,
     MatBadgeModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   entryComponents: [
     PostDialogComponent
   ],
-  providers: [{provide: APP_BASE_HREF, useValue : '/' }],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

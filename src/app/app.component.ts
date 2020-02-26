@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Post } from './post';
 import { MatDialog } from '@angular/material/dialog';
 import { PostDialogComponent } from './post-dialog/post-dialog.component';
+import { PostService } from './post.service';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +11,13 @@ import { PostDialogComponent } from './post-dialog/post-dialog.component';
 })
 export class AppComponent {
   title = 'postImagens';
+  public posts: Post[];
 
-  public posts: Post[] = [
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-    new Post("Carlos", "Meu Post", "Sub Teste", "teste@teste.com", "teste"),
-  ];
-
-  constructor(public dialog: MatDialog){}
+  constructor(public dialog: MatDialog, public postService: PostService){}
+  
+  ngOnInit(){
+    this.posts = this.postService.posts;
+  }
 
   openDialog(){
     const dialogRef = this.dialog.open(PostDialogComponent, {width: '600px'});
